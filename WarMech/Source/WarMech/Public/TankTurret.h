@@ -3,26 +3,24 @@
 #pragma once
 
 #include "Components/StaticMeshComponent.h"
-#include "TankBarrel.generated.h"
+#include "TankTurret.generated.h"
 
 /**
  * 
  */
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent),hidecategories = ("Collision"))
-class WARMECH_API UTankBarrel : public UStaticMeshComponent
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent), hidecategories = ("Collision"))
+class WARMECH_API UTankTurret : public UStaticMeshComponent
 {
 	GENERATED_BODY()
 	
 public:
-	void Elevate(float RelativeSpeed);
-
+	void UTankTurret::Rotate(float RelativeSpeed);
+	
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
 		float MaxDegreesPerSecond = 10.;
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxElevationDegrees = 40.;
+		float MaxRotationDegrees = 175.;
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MinElevationDegrees =-10.;
-	
-	
+		float MinRotationDegrees = -175.;
 };
