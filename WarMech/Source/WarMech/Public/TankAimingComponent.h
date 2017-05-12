@@ -17,13 +17,9 @@ class WARMECH_API UTankAimingComponent : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UTankAimingComponent();
-
 	void AimAt(FVector,float);
-
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 	void SetTurretReference(UTankTurret* TurretToSet);
-
-
 	
 private:
 	UTankBarrel* Barrel = nullptr;

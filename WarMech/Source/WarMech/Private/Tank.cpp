@@ -29,8 +29,7 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
-	Super::BeginPlay();
-	
+	Super::BeginPlay();	
 }
 
 // Called to bind functionality to input
@@ -43,7 +42,6 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::AimAt(FVector HitLocation)
 {
 	TankAimingComponent->AimAt(HitLocation, BarrelLaunchSpeed);
-	
 }
 
 

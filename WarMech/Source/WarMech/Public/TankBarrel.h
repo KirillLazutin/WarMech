@@ -8,7 +8,7 @@
 /**
  * 
  */
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent),hidecategories = ("Collision"))
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class WARMECH_API UTankBarrel : public UStaticMeshComponent
 {
 	GENERATED_BODY()
@@ -18,11 +18,11 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxDegreesPerSecond = 10.;
+		float MaxDegreesPerSecond = 10;
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxElevationDegrees = 40.;
+		float MaxElevationDegrees = 40;
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MinElevationDegrees =-10.;
+		float MinElevationDegrees =-1;
 	
 	
 };

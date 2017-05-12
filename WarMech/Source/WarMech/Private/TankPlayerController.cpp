@@ -8,15 +8,6 @@ void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	auto ControlledTank = GetControlledTank();
-	if (!ControlledTank)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("no tank"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Player tank: %s"), *ControlledTank->GetName());
-	}
-	
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
@@ -33,7 +24,7 @@ ATank* ATankPlayerController::GetControlledTank() const
 	return Cast<ATank>(GetPawn());
 }
 
-//¬ыводит координаты ’ита
+
 void ATankPlayerController::AimTwoarsCrosshair()
 {
 	if (!GetControlledTank()) return;
@@ -59,18 +50,20 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector &OutHitLocation) cons
 	return true;
 }
 
-
+//возвращает координаты хита
 bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector & HitLocation) const
 {
 	FHitResult HitResult;
 	auto StartLocation = PlayerCameraManager->GetCameraLocation();
 	auto EndLocation = StartLocation + (LookDirection*LineTraceRange);
-	if (GetWorld()->LineTraceSingleByChannel(HitResult,StartLocation,EndLocation,ECollisionChannel::ECC_Visibility))
+	if (GetWorld()->LineTraceSingleByChannel(HitResult,StartLocation,EndLocation,ECollisionChannel::ECC_Visibility)) //работет коллизи€ на дуло
 	{
 		HitLocation = HitResult.Location;
-			return true;
+		return true;
 	}
-	HitLocation = FVector(0);
+	//HitLocation = FVector(0);
+	HitLocation = EndLocation;
+	//HitLocation = HitResult.Location;
 	return true;
 	
 }
