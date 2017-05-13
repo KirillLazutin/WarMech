@@ -28,13 +28,15 @@ void UTankAimingComponent::SetTurretReference(UTankTurret *TurretToSet)
 	Turret = TurretToSet;
 }
 
-void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
+void UTankAimingComponent::AimAt(FVector HitLocation)
 {
 	if (!Barrel) { return; }
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
 	auto AimDeriction = (HitLocation-StartLocation).GetSafeNormal();
 	//auto AimDeriction = OutLaunchVelocity.GetSafeNormal();
+
 	MoveBarrelTwoards(AimDeriction);		
+
 }
 
 void UTankAimingComponent::MoveBarrelTwoards(FVector AimDirection)

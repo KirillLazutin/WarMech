@@ -2,6 +2,7 @@
 
 #include "WarMech.h"
 #include "Tank.h"
+#include "TankAimingComponent.h"
 #include "TankPlayerController.h"
 
 void ATankPlayerController::BeginPlay()
@@ -17,6 +18,9 @@ void ATankPlayerController::Tick(float DeltaTime)
 	//UE_LOG(LogTemp, Warning, TEXT("Player controller ticking"));
 
 }
+
+
+
 
 
 ATank* ATankPlayerController::GetControlledTank() const
@@ -75,4 +79,5 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector &
 	return DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, CameraWorldLocation, LookDirection);
 	
 }
+
 

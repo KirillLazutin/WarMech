@@ -9,6 +9,7 @@
 class UTankBarrel;
 class UTankTurret;
 class UTankAimingComponent;
+class AProjectile;
 
 UCLASS()
 class WARMECH_API ATank : public APawn
@@ -26,6 +27,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretReference(UTankTurret* TurretToSet);
 	
+	UFUNCTION(BlueprintCallable, Category = TankActionEvents)
+	void Fire();
+
+	
+
 
 
 protected:
@@ -40,7 +46,22 @@ private:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UPROPERTY(EditAnywhere)
-		float BarrelLaunchSpeed = 100000;
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBP;
+
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float BarrelLaunchSpeed = 10000; //100000
+
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float ReloadTimeInSeconds = 5;
+
+	UPROPERTY(EditAnywhere, Category = Firing)
+	double LastFireTime = 0;
+	
+	UTankBarrel* Barrel = nullptr;
+	UTankTurret* Turret = nullptr;
+
+
+
 	
 };

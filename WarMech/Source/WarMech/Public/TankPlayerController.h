@@ -32,3 +32,5 @@ private:
 	UPROPERTY(EditAnywhere)
 		float LineTraceRange = 5000000.;
 };
+
+
