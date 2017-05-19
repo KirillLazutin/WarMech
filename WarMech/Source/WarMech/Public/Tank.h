@@ -53,7 +53,7 @@ private:
 	TSubclassOf<AProjectile> ProjectileBP;
 
 	UPROPERTY(EditAnywhere, Category = Firing)
-	float BarrelLaunchSpeed = 10000; //100000
+	float BarrelLaunchSpeed = 20000; //100000
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float ReloadTimeInSeconds = 5;
