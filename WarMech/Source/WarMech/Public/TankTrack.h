@@ -15,7 +15,7 @@ class WARMECH_API UTankTrack : public UStaticMeshComponent
 
 
 public:
-	UFUNCTION(BlueprintCallable, Category = Input)
+	UFUNCTION(BlueprintCallable, Category = "Input")
 		void SetThrottle(float Throttle);
 	//in Newtons
 	UPROPERTY(EditDefaultsOnly)

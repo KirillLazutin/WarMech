@@ -5,7 +5,9 @@
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
 
+class UTankAimingComponent;
 class ATank;
+
 /**
  * 
  */
@@ -14,10 +16,15 @@ class WARMECH_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
-private:
-	ATank* GetControlledTank() const;
-	virtual void BeginPlay() override;
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+		ATank* GetControlledTank() const;
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+		void FoundAimingComponent(UTankAimingComponent* AimingComponentReference);
+private:
+	
+	virtual void BeginPlay() override;
 	virtual void Tick(float) override;
 	void AimTwoarsCrosshair();
 	
