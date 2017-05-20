@@ -3,6 +3,7 @@
 #include "WarMech.h"
 #include "TankTurret.h"
 #include "TankBarrel.h"
+#include "Projectile.h"
 #include "TankAimingComponent.h"
 
 
@@ -41,6 +42,19 @@ void UTankAimingComponent::MoveBarrelTwoards(FVector AimDirection)
 	Barrel->Elevate(DeltaRotator.Pitch);
 	Turret->Rotate(DeltaRotator.Yaw);
 }
+
+void UTankAimingComponent::Fire()
+{
+	if (!ensure(Barrel && ProjectileBP)) { return; }
+	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
+	if ((!bIsReloaded)) { return; }
+	UE_LOG(LogTemp, Warning, TEXT("asdasd"));
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBP, Barrel->GetSocketLocation(FName("Projectile")), Barrel->GetSocketRotation(FName("Projectile")));
+	Projectile->LaunchProjectile(BarrelLaunchSpeed);
+	LastFireTime = FPlatformTime::Seconds();
+
+}
+
 
 
 

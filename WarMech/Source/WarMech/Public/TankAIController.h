@@ -9,7 +9,7 @@
 /**
  * 
  */
-class ATank;
+
 UCLASS()
 class WARMECH_API ATankAIController : public AAIController
 {
